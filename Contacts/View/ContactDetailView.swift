@@ -16,8 +16,11 @@ struct ContactDetailView: View {
    
    var body: some View {
       
-      Text(contact)
-         .font(.title)
+      return Image("greta")
+         .resizable()
+         .scaledToFit()
+         .navigationBarTitle(Text(contact),
+                             displayMode: .inline)
    }
 }
 

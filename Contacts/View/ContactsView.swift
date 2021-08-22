@@ -10,7 +10,10 @@ struct ContactsView: View {
    
    // MARK: - PROPERTY WRAPPERS
    
+   @ObservedObject var contacts: ContactViewModel = ContactViewModel()
    @State private var isShowingNewContactSheet: Bool = false
+   @State private var image: Image?
+   @State private var uiImage: UIImage?
    
    
    
@@ -20,7 +23,7 @@ struct ContactsView: View {
       "Dorothy Gale", "Ozma of Oz", "Glinda of Oz", "Taylor Swift"
    ]
    
-   
+
    
    // MARK: - COMPUTED PROPERTIES
    
@@ -42,7 +45,13 @@ struct ContactsView: View {
                   }
                }
             }
+            ForEach(contacts.contactList) { (contact: ContactModel) in
+               NavigationLink(destination: ContactDetailView(contact: contact.name)) {
+                  Text(contact.name)
+               }
+            }
          }
+         //.onAppear(perform: loadData)
          .navigationTitle("My Contacts")
          .navigationBarItems(trailing: Button(action: {
             print("The + button is tapped.")
@@ -52,10 +61,43 @@ struct ContactsView: View {
                .font(.title)
          }))
          .sheet(isPresented: $isShowingNewContactSheet) {
-            AddContactView()
+            // ImagePicker(uiImage: $uiImage)
+            AddContactView(contacts: contacts)
          }
       }
    }
+   
+   
+   
+   // MARK: - METHODS
+   
+   func getDocumentsDirectory()
+   -> URL {
+      
+       let paths = FileManager.default.urls(for: .documentDirectory,
+                                            in: .userDomainMask)
+       return paths[0]
+   }
+   
+   
+   func saveData() {
+      if let _jpegData = uiImage?.jpegData(compressionQuality: 0.8) {
+         try? _jpegData.write(to: getDocumentsDirectory(),
+                              options: [.atomicWrite, .completeFileProtection])
+      }
+   }
+   
+   
+//   func loadData() {
+//       let filename = getDocumentsDirectory().appendingPathComponent("SavedContacts")
+//
+//       do {
+//           let data = try Data(contentsOf: filename)
+// //           locations = try JSONDecoder().decode([CodableMKPointAnnotation].self, from: data)
+//       } catch {
+//           print("Unable to load saved data.")
+//       }
+//   }
 }
 
 

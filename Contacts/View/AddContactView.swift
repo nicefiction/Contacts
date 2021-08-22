@@ -11,6 +11,8 @@ struct AddContactView: View {
    // MARK: PROPERTY WRAPPERS
    
    @Environment(\.presentationMode) var presentationMode
+   @ObservedObject var contacts: ContactViewModel
+   @State private var name: String = ""
    
    
    
@@ -18,9 +20,18 @@ struct AddContactView: View {
    
    var body: some View {
       
-      Button("Dismiss") {
-         presentationMode.wrappedValue.dismiss()
-      }
+      return
+         NavigationView {
+            Form {
+               TextField("name",
+                         text: $name)
+            }
+            .navigationBarItems(trailing: Button("Done") {
+               let newContact = ContactModel(name: name)
+               contacts.contactList.append(newContact)
+               presentationMode.wrappedValue.dismiss()
+            })
+         }
    }
 }
 
@@ -34,6 +45,6 @@ struct AddContactView_Previews: PreviewProvider {
    
    static var previews: some View {
       
-      AddContactView()
+      AddContactView(contacts: ContactViewModel())
    }
 }

@@ -16,6 +16,8 @@
 		09F8B6D126D15BCE00943017 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8B6D026D15BCE00943017 /* ImagePicker.swift */; };
 		09F8B6D526D15C0500943017 /* ImagePicker+UIViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8B6D426D15C0500943017 /* ImagePicker+UIViewControllerRepresentable.swift */; };
 		09F8B6D926D15C6000943017 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8B6D826D15C5F00943017 /* ImageSaver.swift */; };
+		09F8B6E026D16F4600943017 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8B6DF26D16F4600943017 /* ContactViewModel.swift */; };
+		09F8B6E726D1845B00943017 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8B6E626D1845900943017 /* ContactModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		09F8B6D026D15BCE00943017 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		09F8B6D426D15C0500943017 /* ImagePicker+UIViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImagePicker+UIViewControllerRepresentable.swift"; sourceTree = "<group>"; };
 		09F8B6D826D15C5F00943017 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		09F8B6DF26D16F4600943017 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
+		09F8B6E626D1845900943017 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 			children = (
 				09F8B6D026D15BCE00943017 /* ImagePicker.swift */,
 				09F8B6D426D15C0500943017 /* ImagePicker+UIViewControllerRepresentable.swift */,
+				09F8B6DF26D16F4600943017 /* ContactViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				09F8B6D826D15C5F00943017 /* ImageSaver.swift */,
+				09F8B6E626D1845900943017 /* ContactModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,10 +185,12 @@
 			files = (
 				09F8B6C826D14AE400943017 /* ContactDetailView.swift in Sources */,
 				09F8B6B726D1340800943017 /* ContactsView.swift in Sources */,
+				09F8B6E726D1845B00943017 /* ContactModel.swift in Sources */,
 				09F8B6D126D15BCE00943017 /* ImagePicker.swift in Sources */,
 				09F8B6D926D15C6000943017 /* ImageSaver.swift in Sources */,
 				09F8B6D526D15C0500943017 /* ImagePicker+UIViewControllerRepresentable.swift in Sources */,
 				09F8B6B526D1340800943017 /* ContactsApp.swift in Sources */,
+				09F8B6E026D16F4600943017 /* ContactViewModel.swift in Sources */,
 				09F8B6CD26D1540300943017 /* AddContactView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

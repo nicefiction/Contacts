@@ -23,7 +23,7 @@ struct ContactsView: View {
       "Dorothy Gale", "Ozma of Oz", "Glinda of Oz", "Taylor Swift"
    ]
    
-
+   
    
    // MARK: - COMPUTED PROPERTIES
    
@@ -47,23 +47,33 @@ struct ContactsView: View {
             }
             ForEach(contacts.contactList) { (contact: ContactModel) in
                NavigationLink(destination: ContactDetailView(contact: contact.name)) {
-                  Text(contact.name)
+                  HStack {
+                     contact.image
+                        .resizable()
+                        .frame(width: 50,
+                               height: 50)
+                        .scaledToFit()
+                        .clipShape(RoundedRectangle(cornerRadius: 10.0))
+                     Text(contact.name)
+                  }
                }
             }
          }
-         .navigationTitle("My Contacts")
-         .navigationBarItems(trailing: Button(action: {
-            isShowingNewContactSheet.toggle()
-         }, label: {
-            Image(systemName: "plus.circle")
-               .font(.title)
-         }))
-         .sheet(isPresented: $isShowingNewContactSheet) {
-            // ImagePicker(uiImage: $uiImage)
-            AddContactView(contacts: contacts)
-         }
+      }
+      .navigationTitle("My Contacts")
+      .navigationBarItems(trailing: Button(action: {
+         print("The + button is tapped.")
+         isShowingNewContactSheet.toggle()
+      }, label: {
+         Image(systemName: "plus.circle")
+            .font(.title)
+      }))
+      .sheet(isPresented: $isShowingNewContactSheet) {
+         // ImagePicker(uiImage: $uiImage)
+         AddContactView(contacts: contacts)
       }
    }
+   
    
    
    
@@ -72,9 +82,9 @@ struct ContactsView: View {
    func getDocumentsDirectory()
    -> URL {
       
-       let paths = FileManager.default.urls(for: .documentDirectory,
-                                            in: .userDomainMask)
-       return paths[0]
+      let paths = FileManager.default.urls(for: .documentDirectory,
+                                           in: .userDomainMask)
+      return paths[0]
    }
    
    
@@ -86,16 +96,16 @@ struct ContactsView: View {
    }
    
    
-//   func loadData() {
-//       let filename = getDocumentsDirectory().appendingPathComponent("SavedContacts")
-//
-//       do {
-//           let data = try Data(contentsOf: filename)
-// //           locations = try JSONDecoder().decode([CodableMKPointAnnotation].self, from: data)
-//       } catch {
-//           print("Unable to load saved data.")
-//       }
-//   }
+   //   func loadData() {
+   //       let filename = getDocumentsDirectory().appendingPathComponent("SavedContacts")
+   //
+   //       do {
+   //           let data = try Data(contentsOf: filename)
+   // //           locations = try JSONDecoder().decode([CodableMKPointAnnotation].self, from: data)
+   //       } catch {
+   //           print("Unable to load saved data.")
+   //       }
+   //   }
 }
 
 

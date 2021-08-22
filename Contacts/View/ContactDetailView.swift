@@ -78,6 +78,33 @@ struct ContactDetailView: View {
       else { return }
       
       image = Image(uiImage: _uiImage)
+      
+      saveData()
+   }
+   
+   
+   func getDocumentsDirectory()
+   -> URL {
+      
+      let paths = FileManager.default.urls(for: .documentDirectory,
+                                           in: .userDomainMask)
+      return paths[0]
+   }
+   
+   
+   func saveData() {
+      
+      do {
+         let filename = getDocumentsDirectory().appendingPathComponent("SavedContacts")
+         let data = try JSONEncoder().encode(self.contact)
+         try data.write(to: filename,
+                        options: [.atomicWrite, .completeFileProtection])
+         /// `NOTE`:
+         /// All it takes to ensure that the file is stored with strong encryption is
+         /// to add `.completeFileProtection` to the `data` writing options.
+      } catch {
+         print("Unable to save data.")
+      }
    }
 }
 

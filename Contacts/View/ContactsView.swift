@@ -51,10 +51,8 @@ struct ContactsView: View {
                }
             }
          }
-         //.onAppear(perform: loadData)
          .navigationTitle("My Contacts")
          .navigationBarItems(trailing: Button(action: {
-            print("The + button is tapped.")
             isShowingNewContactSheet.toggle()
          }, label: {
             Image(systemName: "plus.circle")

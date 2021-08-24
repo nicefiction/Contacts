@@ -1,13 +1,11 @@
 // ImagePicker.swift
-// MARK: SOURCE
-// https://www.hackingwithswift.com/books/ios-swiftui/importing-an-image-into-swiftui-using-uiimagepickercontroller
 
 // MARK: - LIBRARIES -
 
 import SwiftUI
 
 
-struct ImagePicker {
+struct ImagePicker: UIViewControllerRepresentable {
    
    // MARK: - NESTED TYPES
    
@@ -35,8 +33,7 @@ struct ImagePicker {
          }
          
          parent.presentationMode.wrappedValue.dismiss()
-      } /// This method will be called when the user has selected an image,
-      /// and will be given a dictionary of information about the selected image.
+      }
    }
    
    
@@ -45,4 +42,25 @@ struct ImagePicker {
    
    @Environment(\.presentationMode) var presentationMode
    @Binding var uiImage: UIImage?
+   
+   
+   
+   // MARK: - PROTOCOL METHODS
+   
+   func makeUIViewController(context: Context)
+   -> some UIViewController {
+      
+      let uiImagePickerController = UIImagePickerController()
+      uiImagePickerController.delegate = context.coordinator
+      
+      return uiImagePickerController
+   }
+   
+   
+   func makeCoordinator()
+   -> Coordinator { Coordinator(self) }
+   
+   
+   func updateUIViewController(_ uiViewController: UIViewControllerType,
+                               context: Context) {}
 }

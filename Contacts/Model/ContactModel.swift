@@ -23,8 +23,21 @@ struct ContactModel: Identifiable,
    
    let id: UUID = UUID()
    var name: String = "Greta"
-   var image: Image = Image("greta")
+   var image: Image?
    
+   
+   
+   // MARK: - COMPUTED PROPERTIES
+   
+//   var image: Image? {
+//
+//      if let _uiImage = self.uiImage {
+//         return Image(uiImage: _uiImage)
+//      } else {
+//         return nil
+//      }
+//   }
+//
    
    
    // MARK: - INITIALIZERS
@@ -62,4 +75,13 @@ struct ContactModel: Identifiable,
       try encodingContainer.encode(name, forKey: CodingKeys.name)
       // try encodingContainer.encode(image, forKey: CodingKeys.image)
    }
+   
+   
+//   func loadImage() {
+//      
+//      guard let _uiImage = self.uiImage
+//      else { return }
+//      
+//      Image(uiImage: _uiImage)
+//   }
 }

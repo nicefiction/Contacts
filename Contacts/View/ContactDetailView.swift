@@ -10,16 +10,15 @@ struct ContactDetailView: View {
    
    // MARK: - PROPERTY WRAPPERS
    
-   @Environment(\.presentationMode) var presentationMode
    @State private var isShowingImagePickerSheet: Bool = false
-   @State private var uiImage: UIImage?
    @State private var image: Image?
+   @State private var uiImage: UIImage?
    
    
    
    // MARK: - PROPERTIES
    
-   let contact: String
+//   var contact: ContactModel
    
    
    
@@ -27,14 +26,7 @@ struct ContactDetailView: View {
    
    var body: some View {
       
-      //      return Image("greta")
-      //         .resizable()
-      //         .scaledToFit()
-      //         .navigationBarTitle(Text(contact),
-      //                             displayMode: .inline)
-      
-      
-      ZStack {
+      return ZStack {
          Rectangle()
             .foregroundColor(.gray)
          if let _image = image {
@@ -53,20 +45,6 @@ struct ContactDetailView: View {
              onDismiss: loadImage) {
          ImagePicker(uiImage: $uiImage)
       }
-      .navigationBarItems(trailing: Button("Save", action: {
-         guard let _uiImage = self.uiImage
-         else { return }
-         
-         let imageSaver = ImageSaver()
-         imageSaver.succesHandler = { print("Succes!") }
-         imageSaver.errorHandler = { (error: Error) in
-            print("Oops: \(error.localizedDescription)")
-         }
-         
-         imageSaver.writeToPhotoAlbum(image: _uiImage)
-         
-         presentationMode.wrappedValue.dismiss()
-      }))
    }
    
    
@@ -78,34 +56,10 @@ struct ContactDetailView: View {
       else { return }
       
       image = Image(uiImage: _uiImage)
-      
-      saveData()
    }
    
    
-   func getDocumentsDirectory()
-   -> URL {
-      
-      let paths = FileManager.default.urls(for: .documentDirectory,
-                                           in: .userDomainMask)
-      return paths[0]
-   }
-   
-   
-   func saveData() {
-      
-      do {
-         let filename = getDocumentsDirectory().appendingPathComponent("SavedContacts")
-         let data = try JSONEncoder().encode(self.contact)
-         try data.write(to: filename,
-                        options: [.atomicWrite, .completeFileProtection])
-         /// `NOTE`:
-         /// All it takes to ensure that the file is stored with strong encryption is
-         /// to add `.completeFileProtection` to the `data` writing options.
-      } catch {
-         print("Unable to save data.")
-      }
-   }
+
 }
 
 
@@ -115,9 +69,9 @@ struct ContactDetailView: View {
 // MARK: - PREVIEWS -
 
 struct ContactDetailView_Previews: PreviewProvider {
-   
+
    static var previews: some View {
-      
-      ContactDetailView(contact: "Olivia")
+
+      ContactDetailView()
    }
 }

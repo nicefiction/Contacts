@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0908E54E26D562BC00BB0576 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0908E54D26D562BC00BB0576 /* ContactViewModel.swift */; };
 		09F8B6B526D1340800943017 /* ContactsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8B6B426D1340800943017 /* ContactsApp.swift */; };
 		09F8B6B726D1340800943017 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8B6B626D1340800943017 /* ContactsView.swift */; };
 		09F8B6B926D1340B00943017 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F8B6B826D1340B00943017 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0908E54D26D562BC00BB0576 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
 		09F8B6B126D1340800943017 /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09F8B6B426D1340800943017 /* ContactsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsApp.swift; sourceTree = "<group>"; };
 		09F8B6B626D1340800943017 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				09F8B6D026D15BCE00943017 /* ImagePicker.swift */,
+				0908E54D26D562BC00BB0576 /* ContactViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09F8B6C826D14AE400943017 /* ContactDetailView.swift in Sources */,
+				0908E54E26D562BC00BB0576 /* ContactViewModel.swift in Sources */,
 				09F8B6B726D1340800943017 /* ContactsView.swift in Sources */,
 				09F8B6E726D1845B00943017 /* ContactModel.swift in Sources */,
 				09F8B6D126D15BCE00943017 /* ImagePicker.swift in Sources */,

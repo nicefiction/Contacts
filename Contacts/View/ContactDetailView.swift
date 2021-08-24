@@ -13,12 +13,7 @@ struct ContactDetailView: View {
    @State private var isShowingImagePickerSheet: Bool = false
    @State private var image: Image?
    @State private var uiImage: UIImage?
-   
-   
-   
-   // MARK: - PROPERTIES
-   
-//   var contact: ContactModel
+   @State var contact: ContactModel
    
    
    
@@ -48,6 +43,7 @@ struct ContactDetailView: View {
    }
    
    
+   
    // MARK: - METHODS
    
    func loadImage() {
@@ -57,21 +53,20 @@ struct ContactDetailView: View {
       
       image = Image(uiImage: _uiImage)
    }
-   
-   
-
 }
-
 
 
 
 
 // MARK: - PREVIEWS -
 
-struct ContactDetailView_Previews: PreviewProvider {
-
-   static var previews: some View {
-
-      ContactDetailView()
-   }
-}
+//struct ContactDetailView_Previews: PreviewProvider {
+//
+//   static let contact: ContactModel = ContactModel(image: Image("greta"),
+//                                                   name: "Greta")
+//
+//   static var previews: some View {
+//
+//      ContactDetailView(contact: contact)
+//   }
+//}

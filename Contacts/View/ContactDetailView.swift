@@ -33,6 +33,8 @@ struct ContactDetailView: View {
                .font(.callout)
          }
       }
+      .navigationBarTitle(Text(contact.name),
+                          displayMode: .inline)
       .onTapGesture {
          isShowingImagePickerSheet.toggle()
       }

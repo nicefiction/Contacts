@@ -23,7 +23,19 @@ struct ContactsView: View {
          List {
             ForEach(contactsViewModel.contacts) { (contactViewModel: ContactViewModel) in
                NavigationLink(destination: ContactDetailView(contactViewModel: contactViewModel)) {
-                  Text(contactViewModel.contact.name)
+                  HStack {
+                     if let _image = contactViewModel.contact.image {
+                        _image
+                           .resizable()
+                           .frame(width: 70, height: 70)
+                           .clipShape(RoundedRectangle(cornerRadius: 10))
+                     } else {
+                        RoundedRectangle(cornerRadius: 10.0)
+                           .frame(width: 70, height: 70)
+                           .foregroundColor(.gray)
+                     }
+                     Text(contactViewModel.contact.name)
+                  }
                }
             }
          }

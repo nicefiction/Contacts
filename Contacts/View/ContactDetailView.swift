@@ -11,7 +11,6 @@ struct ContactDetailView: View {
    // MARK: - PROPERTY WRAPPERS
    
    @State private var isShowingImagePickerSheet: Bool = false
-   @State private var image: Image?
    @State private var uiImage: UIImage?
    @ObservedObject var contactViewModel: ContactViewModel
    

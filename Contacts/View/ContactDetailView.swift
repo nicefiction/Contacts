@@ -62,13 +62,10 @@ struct ContactDetailView: View {
 
 // MARK: - PREVIEWS -
 
-//struct ContactDetailView_Previews: PreviewProvider {
-//
-//   static let contact: ContactModel = ContactModel(image: Image("greta"),
-//                                                   name: "Greta")
-//
-//   static var previews: some View {
-//
-//      ContactDetailView(contact: contact)
-//   }
-//}
+struct ContactDetailView_Previews: PreviewProvider {
+
+   static var previews: some View {
+
+      ContactDetailView(contactViewModel: ContactViewModel())
+   }
+}

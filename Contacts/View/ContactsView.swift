@@ -10,6 +10,7 @@ struct ContactsView: View {
    // MARK: - PROPERTY WRAPPERS
    
    @ObservedObject var contactViewModel = ContactViewModel()
+   @ObservedObject var contactsViewModel = ContactsViewModel()
    @State private var isShowingAddContactSheet: Bool = false
    
    
@@ -20,9 +21,9 @@ struct ContactsView: View {
       
       return NavigationView {
          List {
-            ForEach(contactViewModel.contacts) { (contact: ContactModel) in
-               NavigationLink(destination: ContactDetailView(contact: contact)) {
-                  Text(contact.name)
+            ForEach(contactsViewModel.contacts) { (contactViewModel: ContactViewModel) in
+               NavigationLink(destination: ContactDetailView(contactViewModel: contactViewModel)) {
+                  Text(contactViewModel.contact.name)
                }
             }
          }
@@ -38,7 +39,7 @@ struct ContactsView: View {
                }))
          .sheet(isPresented: $isShowingAddContactSheet,
                 content: {
-                  AddContactView(contactViewModel: contactViewModel)
+                  AddContactView(contactsViewModel: contactsViewModel)
          })
       }
    }

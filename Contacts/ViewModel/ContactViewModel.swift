@@ -6,7 +6,8 @@ import SwiftUI
 
 
 
-class ContactViewModel: ObservableObject {
+class ContactViewModel: Identifiable,
+                        ObservableObject {
    
-   @Published var contacts = Array<ContactModel>()
+   @Published var contact = ContactModel()
 }

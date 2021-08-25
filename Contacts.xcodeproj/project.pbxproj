@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0908E54E26D562BC00BB0576 /* ContactViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0908E54D26D562BC00BB0576 /* ContactViewModel.swift */; };
+		09E05E5C26D6499000A8BE33 /* ContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E05E5B26D6499000A8BE33 /* ContactsViewModel.swift */; };
 		09F8B6B526D1340800943017 /* ContactsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8B6B426D1340800943017 /* ContactsApp.swift */; };
 		09F8B6B726D1340800943017 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F8B6B626D1340800943017 /* ContactsView.swift */; };
 		09F8B6B926D1340B00943017 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09F8B6B826D1340B00943017 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		0908E54D26D562BC00BB0576 /* ContactViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewModel.swift; sourceTree = "<group>"; };
+		09E05E5B26D6499000A8BE33 /* ContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsViewModel.swift; sourceTree = "<group>"; };
 		09F8B6B126D1340800943017 /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09F8B6B426D1340800943017 /* ContactsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsApp.swift; sourceTree = "<group>"; };
 		09F8B6B626D1340800943017 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				09F8B6D026D15BCE00943017 /* ImagePicker.swift */,
 				0908E54D26D562BC00BB0576 /* ContactViewModel.swift */,
+				09E05E5B26D6499000A8BE33 /* ContactsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				09F8B6D126D15BCE00943017 /* ImagePicker.swift in Sources */,
 				09F8B6D926D15C6000943017 /* ImageSaver.swift in Sources */,
 				09F8B6B526D1340800943017 /* ContactsApp.swift in Sources */,
+				09E05E5C26D6499000A8BE33 /* ContactsViewModel.swift in Sources */,
 				09F8B6CD26D1540300943017 /* AddContactView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

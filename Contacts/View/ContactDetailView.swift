@@ -13,7 +13,7 @@ struct ContactDetailView: View {
    @State private var isShowingImagePickerSheet: Bool = false
    @State private var image: Image?
    @State private var uiImage: UIImage?
-   @State var contact: ContactModel
+   @ObservedObject var contactViewModel: ContactViewModel
    
    
    
@@ -24,7 +24,7 @@ struct ContactDetailView: View {
       return ZStack {
          Rectangle()
             .foregroundColor(.gray)
-         if let _image = image {
+         if let _image = contactViewModel.contact.image {
             _image
                .resizable()
                .scaledToFit()
@@ -33,7 +33,7 @@ struct ContactDetailView: View {
                .font(.callout)
          }
       }
-      .navigationBarTitle(Text(contact.name),
+      .navigationBarTitle(Text(contactViewModel.contact.name),
                           displayMode: .inline)
       .onTapGesture {
          isShowingImagePickerSheet.toggle()
@@ -53,7 +53,7 @@ struct ContactDetailView: View {
       guard let _uiImage = uiImage
       else { return }
       
-      image = Image(uiImage: _uiImage)
+      contactViewModel.contact.image = Image(uiImage: _uiImage)
    }
 }
 

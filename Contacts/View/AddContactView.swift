@@ -12,7 +12,8 @@ struct AddContactView: View {
    
    @Environment(\.presentationMode) var presentationMode
    @State private var name: String = ""
-   var contactViewModel: ContactViewModel
+   // @ObservedObject var contactViewModel: ContactViewModel
+   @ObservedObject var contactsViewModel: ContactsViewModel
    
    
    
@@ -30,9 +31,9 @@ struct AddContactView: View {
             trailing:
                Button("Done",
                       action: {
-                        var newContact = ContactModel()
-                        newContact.name = name
-                        contactViewModel.contacts.append(newContact)
+                        let newContact = ContactViewModel()
+                        newContact.contact.name = name
+                        contactsViewModel.contacts.append(newContact)
                         presentationMode.wrappedValue.dismiss()
                    }))
       }
@@ -81,6 +82,6 @@ struct AddContactView_Previews: PreviewProvider {
 
    static var previews: some View {
 
-      AddContactView(contactViewModel: ContactViewModel())
+      AddContactView(contactsViewModel: ContactsViewModel())
    }
 }

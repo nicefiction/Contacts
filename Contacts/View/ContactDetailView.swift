@@ -23,7 +23,7 @@ struct ContactDetailView: View {
       return ZStack {
          Rectangle()
             .foregroundColor(.gray)
-         if let _image = contactViewModel.contact.image {
+         if let _image = contactViewModel.image {
             _image
                .resizable()
                .scaledToFit()
@@ -32,7 +32,7 @@ struct ContactDetailView: View {
                .font(.callout)
          }
       }
-      .navigationBarTitle(Text(contactViewModel.contact.name),
+      .navigationBarTitle(Text(contactViewModel.name),
                           displayMode: .inline)
       .onTapGesture {
          isShowingImagePickerSheet.toggle()
@@ -52,19 +52,27 @@ struct ContactDetailView: View {
       guard let _uiImage = uiImage
       else { return }
       
-      contactViewModel.contact.image = Image(uiImage: _uiImage)
+      let paths = FileManager.default.urls(for: .documentDirectory,
+                                           in: .userDomainMask)
+      
+      if let jpegData = _uiImage.jpegData(compressionQuality: 0.8) {
+         try? jpegData.write(to: paths[0],
+                             options: [.atomicWrite, .completeFileProtection])
+      }
+      
+      contactViewModel.image = Image(uiImage: _uiImage)
+      print("Printing \(contactViewModel)")
    }
 }
-
 
 
 
 // MARK: - PREVIEWS -
 
 struct ContactDetailView_Previews: PreviewProvider {
-
+   
    static var previews: some View {
-
+      
       ContactDetailView(contactViewModel: ContactViewModel())
    }
 }

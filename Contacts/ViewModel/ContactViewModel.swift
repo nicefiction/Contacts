@@ -9,5 +9,7 @@ import SwiftUI
 class ContactViewModel: Identifiable,
                         ObservableObject {
    
-   @Published var contact = ContactModel()
+   let id: UUID = UUID()
+   @Published var image: Image = Image("greta")
+   @Published var name: String = ""
 }

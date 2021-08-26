@@ -10,6 +10,6 @@ class ContactViewModel: Identifiable,
                         ObservableObject {
    
    let id: UUID = UUID()
-   @Published var image: Image = Image("greta")
+   @Published var image: Image?
    @Published var name: String = ""
 }

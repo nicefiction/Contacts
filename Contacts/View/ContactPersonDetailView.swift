@@ -55,12 +55,12 @@ struct ContactPersonDetailView: View {
       let paths = FileManager.default.urls(for: .documentDirectory,
                                            in: .userDomainMask)
       
-      if let jpegData = _uiImage.jpegData(compressionQuality: 0.8) {
-         try? jpegData.write(to: paths[0],
+      if let _jpegData = _uiImage.jpegData(compressionQuality: 0.8) {
+         try? _jpegData.write(to: paths[0],
                              options: [.atomicWrite, .completeFileProtection])
       }
       
-      
+     
       
       print("Printing \(contactPerson)")
    }

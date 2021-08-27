@@ -9,7 +9,7 @@ struct ContactsView: View {
    
    // MARK: - PROPERTY WRAPPERS
    
-   @ObservedObject var contacts = ContactsViewModel()
+   @ObservedObject var contacts = Contacts()
    @State private var isShowingAddContactSheet: Bool = false
    
    
@@ -20,10 +20,10 @@ struct ContactsView: View {
       
       return NavigationView {
          List {
-            ForEach(contacts.list) { (contactViewModel: ContactViewModel) in
-               NavigationLink(destination: ContactDetailView(contactViewModel: contactViewModel)) {
+            ForEach(contacts.list) { (contactPerson: ContactPerson) in
+               NavigationLink(destination: ContactPersonDetailView(contactPerson: contactPerson)) {
                   HStack {
-                     if let _image = contactViewModel.image {
+                     if let _image = Image(contactPerson.imageName) {
                         _image
                            .resizable()
                            .frame(width: 70, height: 70)
@@ -33,7 +33,7 @@ struct ContactsView: View {
                            .frame(width: 70, height: 70)
                            .foregroundColor(.gray)
                      }
-                     Text(contactViewModel.name)
+                     Text(contactPerson.name)
                   }
                }
             }
@@ -50,7 +50,7 @@ struct ContactsView: View {
                }))
          .sheet(isPresented: $isShowingAddContactSheet,
                 content: {
-                  AddContactView(contactsViewModel: contacts)
+                  AddContactPersonView(contactsViewModel: contacts)
          })
       }
    }

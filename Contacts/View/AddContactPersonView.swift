@@ -12,7 +12,13 @@ struct AddContactPersonView: View {
    
    @Environment(\.presentationMode) var presentationMode
    @State private var name: String = ""
-   @ObservedObject var contacts: Contacts
+   @State private var uiImage: UIImage?
+   
+   
+   
+   // MARK: - PROPERTIES
+   
+   var contacts: Contacts
    
    
    
@@ -25,18 +31,34 @@ struct AddContactPersonView: View {
             TextField("Name", text: $name)
                .textFieldStyle(RoundedBorderTextFieldStyle())
                .padding()
+            ImagePicker(uiImage: $uiImage)
          }
          .navigationBarItems(
             trailing:
                Button("Done",
                       action: {
-                        var newContact = ContactPerson()
+                        let newContact = ContactPerson()
                         newContact.name = name
+                        newContact.profileImage = Image("greta")
                         contacts.list.append(newContact)
+                        
+                        loadImage(from: newContact)
                         presentationMode.wrappedValue.dismiss()
                    }))
       }
    }
+   
+   
+   
+   func loadImage(from contactPerson: ContactPerson) {
+      
+      guard let _uiImage = uiImage
+      else { return }
+      
+      contactPerson.profileImage = Image(uiImage: _uiImage)
+      print("Printing \(contactPerson)")
+   }
+   
 }
 
 

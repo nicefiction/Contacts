@@ -12,7 +12,7 @@ struct ContactPersonDetailView: View {
    
    @State private var isShowingImagePickerSheet: Bool = false
    @State private var uiImage: UIImage?
-   @State var contactPerson: ContactPerson
+   @ObservedObject var contactPerson: ContactPerson
    
    
    
@@ -49,14 +49,6 @@ struct ContactPersonDetailView: View {
       
       guard let _uiImage = uiImage
       else { return }
-      
-      //      let paths = FileManager.default.urls(for: .documentDirectory,
-      //                                           in: .userDomainMask)
-      //
-      //      if let _jpegData = _uiImage.jpegData(compressionQuality: 0.8) {
-      //         try? _jpegData.write(to: paths[0],
-      //                             options: [.atomicWrite, .completeFileProtection])
-      //      }
       
       contactPerson.profileImage = Image(uiImage: _uiImage)
       print("Printing \(contactPerson)")

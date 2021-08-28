@@ -6,9 +6,10 @@ import SwiftUI
 
 
 
-struct ContactPerson: Identifiable {
+class ContactPerson: Identifiable,
+                     ObservableObject {
    
    let id: UUID = UUID()
-   var profileImage: Image?
-   var name: String = ""
+   @Published var profileImage: Image?
+   @Published var name: String = ""
 }

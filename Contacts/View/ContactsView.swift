@@ -23,7 +23,7 @@ struct ContactsView: View {
             ForEach(contacts.list) { (contactPerson: ContactPerson) in
                NavigationLink(destination: ContactPersonDetailView(contactPerson: contactPerson)) {
                   HStack {
-                     if let _image = Image(contactPerson.imageName) {
+                     if let _image = contactPerson.profileImage {
                         _image
                            .resizable()
                            .frame(width: 70, height: 70)
@@ -50,7 +50,7 @@ struct ContactsView: View {
                }))
          .sheet(isPresented: $isShowingAddContactSheet,
                 content: {
-                  AddContactPersonView(contactsViewModel: contacts)
+                  AddContactPersonView(contacts: contacts)
          })
       }
    }

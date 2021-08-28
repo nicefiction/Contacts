@@ -12,7 +12,7 @@ struct ContactPersonDetailView: View {
    
    @State private var isShowingImagePickerSheet: Bool = false
    @State private var uiImage: UIImage?
-   var contactPerson: ContactPerson
+   @State var contactPerson: ContactPerson
    
    
    
@@ -23,7 +23,7 @@ struct ContactPersonDetailView: View {
       return ZStack {
          Rectangle()
             .foregroundColor(.gray)
-         if let _image = Image(contactPerson.imageName) {
+         if let _image = contactPerson.profileImage {
             _image
                .resizable()
                .scaledToFit()
@@ -34,9 +34,7 @@ struct ContactPersonDetailView: View {
       }
       .navigationBarTitle(Text(contactPerson.name),
                           displayMode: .inline)
-      .onTapGesture {
-         isShowingImagePickerSheet.toggle()
-      }
+      .onTapGesture { isShowingImagePickerSheet.toggle() }
       .sheet(isPresented: $isShowingImagePickerSheet,
              onDismiss: loadImage) {
          ImagePicker(uiImage: $uiImage)
@@ -52,16 +50,15 @@ struct ContactPersonDetailView: View {
       guard let _uiImage = uiImage
       else { return }
       
-      let paths = FileManager.default.urls(for: .documentDirectory,
-                                           in: .userDomainMask)
+      //      let paths = FileManager.default.urls(for: .documentDirectory,
+      //                                           in: .userDomainMask)
+      //
+      //      if let _jpegData = _uiImage.jpegData(compressionQuality: 0.8) {
+      //         try? _jpegData.write(to: paths[0],
+      //                             options: [.atomicWrite, .completeFileProtection])
+      //      }
       
-      if let _jpegData = _uiImage.jpegData(compressionQuality: 0.8) {
-         try? _jpegData.write(to: paths[0],
-                             options: [.atomicWrite, .completeFileProtection])
-      }
-      
-     
-      
+      contactPerson.profileImage = Image(uiImage: _uiImage)
       print("Printing \(contactPerson)")
    }
 }
